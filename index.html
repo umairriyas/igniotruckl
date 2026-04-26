@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingino Logistics | Trucking & Freight — Winston Salem, NC</title>
+    <meta
+      name="description"
+      content="Ingino Logistics provides professional trucking, freight, long haul, local delivery and logistics solutions across North Carolina and the USA. Based in Winston Salem, NC."
+    />
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <style>
+      /* ── HERO ───────────────────────────────────── */
+      .hero {
+        background: var(--color-navy);
+        position: relative;
+        overflow: hidden;
+        padding: clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 55% 75% at 10% 60%,
+            rgba(245, 158, 11, 0.08) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 40% 60% at 90% 10%,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 55%
+          );
+        pointer-events: none;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+      }
+
+      .hero-left {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .hero-right {
+        position: relative;
+      }
+
+      .hero-img-main {
+        width: 100%;
+        height: 480px;
+        object-fit: cover;
+        border-radius: 1.25rem;
+        display: block;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      }
+
+      /* Floating trust badge overlaid on the image */
+      .hero-img-badge {
+        position: absolute;
+        bottom: -1.25rem;
+        left: -1.25rem;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        min-width: 200px;
+      }
+
+      .hero-img-badge-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--color-amber);
+        display: grid;
+        place-items: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .hero-img-badge-text strong {
+        display: block;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--color-navy);
+        line-height: 1.3;
+      }
+
+      .hero-img-badge-text span {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        font-weight: 500;
+      }
+
+      /* Second floating card — top right */
+      .hero-img-card {
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+        background: var(--color-navy-dark);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 0.875rem;
+        padding: 0.9rem 1.1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        min-width: 110px;
+      }
+
+      .hero-img-card strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--color-amber);
+        line-height: 1;
+      }
+
+      .hero-img-card span {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 0.25rem;
+        display: block;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-amber);
+        background: rgba(245, 158, 11, 0.12);
+        border: 1px solid rgba(245, 158, 11, 0.28);
+        padding: 0.4rem 1rem;
+        border-radius: 9999px;
+        width: fit-content;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+        color: #fff;
+        font-weight: 800;
+        line-height: 1.06;
+        letter-spacing: -0.025em;
+      }
+
+      .hero h1 em {
+        font-style: normal;
+        color: var(--color-amber);
+      }
+
+      .hero-subtitle {
+        font-size: var(--text-base);
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.8;
+        max-width: 50ch;
+      }
+
+      .hero-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-stat {
+        display: grid;
+        gap: 2px;
+      }
+
+      .hero-stat strong {
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        font-weight: 800;
+        color: var(--color-amber);
+      }
+
+      .hero-stat span {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 500;
+      }
+
+      /* ── TRUST BAR ──────────────────────────────── */
+      .trust-bar {
+        background: #fff;
+        border-bottom: 1px solid var(--color-border);
+        padding: 0.9rem 0;
+      }
+
+      .trust-items {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--color-navy);
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        white-space: nowrap;
+      }
+
+      /* ── SERVICE CARDS (home) ───────────────────── */
+      .services-section {
+        background: var(--color-bg);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .service-card {
+        background: #fff;
+        border: 1px solid var(--color-border);
+        border-radius: 1rem;
+        padding: 2rem 1.5rem;
+        transition:
+          box-shadow 0.2s ease,
+          transform 0.2s ease,
+          border-color 0.2s ease;
+        display: grid;
+        gap: 0.75rem;
+        align-content: start;
+      }
+
+      .service-card:hover {
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+        transform: translateY(-3px);
+        border-color: rgba(245, 158, 11, 0.3);
+      }
+
+      .service-icon {
+        font-size: 2.25rem;
+        line-height: 1;
+      }
+
+      .service-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-navy);
+        margin: 0;
+      }
+
+      .service-card p {
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+        line-height: 1.75;
+        margin: 0;
+      }
+
+      .card-link {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--color-amber);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        margin-top: 0.25rem;
+      }
+
+      .card-link:hover {
+        color: var(--color-amber-hover);
+      }
+
+      .section-cta {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      /* ── TESTIMONIALS ───────────────────────────── */
+      .testimonials-section {
+        background: var(--color-surface-2);
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .testimonial-card {
+        background: #fff;
+        border: 1px solid var(--color-border);
+        border-radius: 1rem;
+        padding: 2rem 1.5rem;
+        display: grid;
+        gap: 1rem;
+        align-content: start;
+        transition:
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .testimonial-card:hover {
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .stars {
+        color: var(--color-amber);
+        font-size: 1rem;
+        letter-spacing: 3px;
+        line-height: 1;
+      }
+
+      .testimonial-card p {
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+        line-height: 1.85;
+        font-style: italic;
+        margin: 0;
+      }
+
+      .testimonial-author {
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-border);
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .testimonial-author strong {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+
+      .testimonial-author span {
+        font-size: 0.78rem;
+        color: var(--color-text-muted);
+      }
+
+      /* ── HAUL SECTION ───────────────────────────── */
+      .haul-section {
+        background: #fff;
+      }
+
+      /* ── RESPONSIVE ─────────────────────────────── */
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testimonials-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-left {
+          align-items: center;
+        }
+        .hero-badge {
+          margin-inline: auto;
+        }
+        .hero-subtitle {
+          margin-inline: auto;
+        }
+        .hero-btns {
+          justify-content: center;
+        }
+        .hero-stats {
+          justify-content: center;
+        }
+
+        .hero-right {
+          max-width: 520px;
+          margin-inline: auto;
+        }
+        .hero-img-main {
+          height: 340px;
+        }
+        .hero-img-badge {
+          left: 0.5rem;
+          bottom: -1rem;
+        }
+        .hero-img-card {
+          right: 0.5rem;
+          top: -0.75rem;
+        }
+
+        .trust-items {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-img-main {
+          height: 260px;
+        }
+        .hero-img-badge {
+          display: none;
+        }
+        .hero-img-card {
+          display: none;
+        }
+        .trust-items {
+          gap: 0.5rem;
+        }
+        .trust-item {
+          font-size: 0.75rem;
+          padding: 0.4rem 0.7rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <span class="logo-text">Ingino Logistics</span>
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary nav-cta"
+            >Get a Free Quote</a
+          >
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════
+         HERO — Split layout with truck image
+         ═══════════════════════════════════════ -->
+    <section class="hero">
+      <div class="container">
+        <!-- LEFT — Content -->
+        <div class="hero-left">
+          <span class="hero-badge">🚛 Winston Salem, North Carolina</span>
+
+          <h1>
+            Reliable Trucking &amp;<br />
+            <em>Freight You Can Trust</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Ingino Logistics delivers freight on time, every time. Full
+            truckload, LTL, long haul and local delivery across North Carolina
+            and all 48 contiguous states — handled by professionals with over a
+            decade of experience.
+          </p>
+
+          <div class="hero-btns">
+            <a href="contact.html" class="btn btn-primary"
+              >Get a Free Quote →</a
+            >
+            <a href="services.html" class="btn btn-outline-light"
+              >Our Services</a
+            >
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>10+</strong>
+              <span>Years Experience</span>
+            </div>
+            <div class="hero-stat">
+              <strong>500+</strong>
+              <span>Loads Delivered</span>
+            </div>
+            <div class="hero-stat">
+              <strong>48</strong>
+              <span>States Covered</span>
+            </div>
+            <div class="hero-stat">
+              <strong>100%</strong>
+              <span>Licensed &amp; Insured</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT — Truck image with floating cards -->
+        <div class="hero-right">
+          <img
+            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80&fit=crop"
+            alt="Ingino Logistics truck on the highway"
+            class="hero-img-main"
+            loading="eager"
+            width="900"
+            height="480"
+          />
+
+          <!-- Floating badge — bottom left -->
+          <div class="hero-img-badge">
+            <div class="hero-img-badge-icon">🛡️</div>
+            <div class="hero-img-badge-text">
+              <strong>Fully Insured</strong>
+              <span>DOT &amp; MC Licensed</span>
+            </div>
+          </div>
+
+          <!-- Floating card — top right -->
+          <div class="hero-img-card">
+            <strong>48</strong>
+            <span>States Covered</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-items">
+          <div class="trust-item">✅ <span>DOT &amp; MC Licensed</span></div>
+          <div class="trust-item">🛡️ <span>Fully Insured Loads</span></div>
+          <div class="trust-item">📍 <span>48 States Coverage</span></div>
+          <div class="trust-item">⏱️ <span>On-Time Delivery</span></div>
+          <div class="trust-item">📡 <span>GPS Load Tracking</span></div>
+          <div class="trust-item">🏆 <span>10+ Years Experience</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES OVERVIEW -->
+    <section class="section services-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Do</span>
+          <h2>Our Core Services</h2>
+          <p>
+            From single loads to full logistics management — we have the fleet,
+            the team and the experience to move your freight anywhere across the
+            USA.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🚛</div>
+            <h3>Full Truckload (FTL)</h3>
+            <p>
+              Dedicated truck for your full load — maximum efficiency, faster
+              transit and direct delivery with no sharing of space.
+            </p>
+            <a href="services.html" class="card-link">Learn more →</a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📦</div>
+            <h3>Less Than Truckload (LTL)</h3>
+            <p>
+              Pay only for the space you need. We consolidate smaller shipments
+              efficiently — saving you money without sacrificing speed.
+            </p>
+            <a href="services.html" class="card-link">Learn more →</a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🗺️</div>
+            <h3>Long Haul Freight</h3>
+            <p>
+              Cross-country freight delivery across all 48 contiguous states.
+              Reliable, GPS-tracked and fully insured on every mile.
+            </p>
+            <a href="services.html" class="card-link">Learn more →</a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📍</div>
+            <h3>Local &amp; Regional Delivery</h3>
+            <p>
+              Fast and dependable local delivery across Winston Salem, North
+              Carolina and the surrounding Southeast region.
+            </p>
+            <a href="services.html" class="card-link">Learn more →</a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🏭</div>
+            <h3>Freight Logistics</h3>
+            <p>
+              End-to-end freight management — we handle the planning, routing,
+              scheduling and coordination so you don't have to.
+            </p>
+            <a href="services.html" class="card-link">Learn more →</a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">⏰</div>
+            <h3>Expedited Shipping</h3>
+            <p>
+              Urgent shipment? We offer expedited freight with priority routing
+              and same-day or next-day delivery options.
+            </p>
+            <a href="services.html" class="card-link">Learn more →</a>
+          </div>
+        </div>
+
+        <div class="section-cta">
+          <a href="services.html" class="btn btn-primary">View All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BANNER -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>10+</h3>
+            <p>Years in trucking &amp; logistics</p>
+          </div>
+          <div class="stat-card">
+            <h3>500+</h3>
+            <p>Loads delivered on time</p>
+          </div>
+          <div class="stat-card">
+            <h3>48</h3>
+            <p>States we operate across</p>
+          </div>
+          <div class="stat-card">
+            <h3>100%</h3>
+            <p>DOT licensed &amp; fully insured</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Why Ingino Logistics</span>
+          <h2>The Right Partner for Your Freight</h2>
+          <p>
+            We don't just move loads — we build long-term partnerships built on
+            reliability, communication and results.
+          </p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">⚡</div>
+            <h3>On-Time Every Time</h3>
+            <p>
+              We take delivery schedules seriously. Our drivers and dispatch
+              team work together to ensure your freight arrives when promised.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🛡️</div>
+            <h3>Fully Licensed &amp; Insured</h3>
+            <p>
+              DOT and MC licensed, fully insured on every load. You can ship
+              with confidence knowing your freight is fully protected.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">📡</div>
+            <h3>Real-Time Tracking</h3>
+            <p>
+              GPS tracking on every load. Know exactly where your freight is at
+              all times — no guessing, no chasing, just visibility.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">💰</div>
+            <h3>Competitive Rates</h3>
+            <p>
+              Fair, transparent pricing with no hidden fees. We offer
+              competitive rates for both single loads and ongoing freight
+              contracts.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🤝</div>
+            <h3>Dedicated Support</h3>
+            <p>
+              A real person answers when you call. Our team is available to
+              answer questions, provide updates and resolve any issues fast.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">📍</div>
+            <h3>Local Roots, National Reach</h3>
+            <p>
+              Proudly based in Winston Salem, NC — with the fleet and network to
+              cover 48 states and serve clients across the entire country.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT STRIP (image + content) -->
+    <section class="section" style="background: #f1f5f9">
+      <div class="container about-grid">
+        <div class="about-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&fit=crop"
+            alt="Ingino Logistics freight operations"
+            class="about-img"
+            loading="lazy"
+            width="800"
+            height="440"
+          />
+        </div>
+        <div class="about-content">
+          <span class="section-label">About Us</span>
+          <h2>Built in Winston Salem. Trusted Across the Nation.</h2>
+          <p>
+            Ingino Logistics was founded by Michael Ingino with a single truck
+            and a commitment to doing things right. Over 10 years later, we have
+            delivered hundreds of loads across 48 states — earning a reputation
+            for reliability, professionalism and personal service that larger
+            carriers simply can't match.
+          </p>
+          <p>
+            We are proud to be a Winston Salem business and prouder still to be
+            the freight partner that our clients count on — time after time,
+            load after load.
+          </p>
+          <div class="about-btns">
+            <a href="about.html" class="btn btn-primary">Learn Our Story</a>
+            <a href="contact.html" class="btn btn-outline">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WE HAUL -->
+    <section class="section haul-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Haul</span>
+          <h2>Freight Types We Handle</h2>
+          <p>
+            We haul a wide range of freight types — dry goods, palletised cargo,
+            industrial equipment and more.
+          </p>
+        </div>
+        <div class="haul-grid">
+          <div class="haul-item">📦 Dry Van Freight</div>
+          <div class="haul-item">🏭 Industrial Equipment</div>
+          <div class="haul-item">🛒 Retail &amp; Consumer Goods</div>
+          <div class="haul-item">🌾 Agricultural Products</div>
+          <div class="haul-item">🏗️ Construction Materials</div>
+          <div class="haul-item">🖥️ Electronics &amp; Tech</div>
+          <div class="haul-item">🪑 Furniture &amp; Home Goods</div>
+          <div class="haul-item">🧴 Health &amp; Beauty Products</div>
+          <div class="haul-item">🔧 Auto Parts &amp; Accessories</div>
+          <div class="haul-item">📋 Paper &amp; Packaging</div>
+          <div class="haul-item">🥫 Non-Perishable Food</div>
+          <div class="haul-item">📦 Palletised Cargo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Client Reviews</span>
+          <h2>What Our Clients Say</h2>
+          <p>Trusted by businesses across North Carolina and the entire USA.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Ingino Logistics has been our go-to carrier for over two years.
+              Reliable, professional and always on time. Our freight is in safe
+              hands every single shipment."
+            </p>
+            <div class="testimonial-author">
+              <strong>James R.</strong>
+              <span>Warehouse Manager, Greensboro NC</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "We needed an urgent cross-country load moved within 24 hours.
+              Michael and his team made it happen without any issues.
+              Outstanding service and great communication."
+            </p>
+            <div class="testimonial-author">
+              <strong>Patricia M.</strong>
+              <span>Operations Director, Charlotte NC</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Competitive pricing, real-time tracking and a team that actually
+              picks up the phone. Ingino Logistics is exactly what a small
+              business needs in a freight partner."
+            </p>
+            <div class="testimonial-author">
+              <strong>David K.</strong>
+              <span>Business Owner, Winston Salem NC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-label label-light">Ready to Ship?</span>
+          <h2>Get a Free Freight Quote Today</h2>
+          <p>
+            Tell us about your load and we'll get back to you fast with a
+            competitive, no-obligation quote. Fair pricing, no hidden fees.
+          </p>
+          <div class="cta-btns">
+            <a href="contact.html" class="btn btn-accent">Get a Free Quote →</a>
+            <a href="mailto:mgi5742@gmail.com" class="btn btn-outline-light"
+              >✉️ Email Us Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="images/logo.png" alt="Ingino Logistics" />
+            <span>Ingino Logistics</span>
+          </div>
+          <p>
+            Professional trucking, freight and logistics services based in
+            Winston Salem, NC. Serving all 48 contiguous states since 2014.
+          </p>
+          <a href="mailto:mgi5742@gmail.com" class="footer-email"
+            >mgi5742@gmail.com</a
+          >
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Full Truckload (FTL)</a></li>
+            <li><a href="services.html">Less Than Truckload (LTL)</a></li>
+            <li><a href="services.html">Long Haul Freight</a></li>
+            <li><a href="services.html">Local Delivery</a></li>
+            <li><a href="services.html">Freight Logistics</a></li>
+            <li><a href="services.html">Expedited Shipping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>2811 Bleeker Sq Apt E</li>
+            <li>Winston Salem, NC 27106</li>
+            <li><a href="mailto:mgi5742@gmail.com">mgi5742@gmail.com</a></li>
+            <li><a href="contact.html">Send a message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>
+          © 2026 Ingino Logistics. All rights reserved. | Winston Salem, North
+          Carolina
+        </p>
+        <p>DOT Licensed · Fully Insured · 48 States</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

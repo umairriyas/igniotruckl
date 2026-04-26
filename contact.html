@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Ingino Logistics — Winston Salem, NC</title>
+    <meta
+      name="description"
+      content="Contact Ingino Logistics for a free freight quote. Trucking, FTL, LTL, long haul and local delivery across Winston Salem, NC and all 48 states."
+    />
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <style>
+      .contact-layout {
+        display: grid;
+        grid-template-columns: 1.4fr 0.6fr;
+        gap: 2.5rem;
+        align-items: start;
+      }
+
+      .contact-form-wrap {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: clamp(1.5rem, 4vw, 2.5rem);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      .form-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+        color: #1e3a5f;
+      }
+
+      .form-subtitle {
+        font-size: 0.88rem;
+        color: #64748b;
+        margin-bottom: 1.75rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .form-group {
+        display: grid;
+        gap: 0.4rem;
+        margin-bottom: 1.15rem;
+      }
+
+      .form-group label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #1e293b;
+      }
+
+      .form-group .req {
+        color: #1e3a5f;
+      }
+      .form-group .opt {
+        color: #94a3b8;
+        font-weight: 400;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.78rem 1rem;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 10px;
+        background: #f8fafc;
+        font-size: 0.93rem;
+        color: #1e293b;
+        font-family: inherit;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #cbd5e1;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #1e3a5f;
+        box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+      }
+
+      .form-group input.error,
+      .form-group textarea.error,
+      .form-group select.error {
+        border-color: #dc2626;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      }
+
+      .form-group select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+        cursor: pointer;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 130px;
+        line-height: 1.65;
+      }
+
+      .field-error {
+        font-size: 0.78rem;
+        color: #dc2626;
+        font-weight: 600;
+        display: none;
+        margin-top: 2px;
+      }
+
+      .field-error.visible {
+        display: block;
+      }
+
+      #form-result {
+        display: none;
+        padding: 0.9rem 1.1rem;
+        border-radius: 10px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+        background: #fee2e2;
+        border: 1px solid #fca5a5;
+        color: #991b1b;
+      }
+
+      #form-result.visible {
+        display: block;
+      }
+
+      .form-submit-btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 52px;
+        font-size: 1rem;
+        border-radius: 10px;
+        margin-top: 0.5rem;
+      }
+
+      .form-note {
+        font-size: 0.78rem;
+        color: #94a3b8;
+        text-align: center;
+        line-height: 1.65;
+        margin-top: 1rem;
+      }
+
+      /* Sidebar */
+      .contact-sidebar {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .info-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        display: grid;
+        gap: 1.1rem;
+      }
+
+      .info-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #1e3a5f;
+      }
+
+      .info-detail {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+      }
+
+      .info-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        background: rgba(30, 58, 95, 0.08);
+        display: grid;
+        place-items: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+        color: #1e3a5f;
+      }
+
+      .info-detail-text p {
+        font-weight: 700;
+        font-size: 0.78rem;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.2rem;
+      }
+
+      .info-detail-text span,
+      .info-detail-text a {
+        font-size: 0.88rem;
+        color: #1e293b;
+        font-weight: 600;
+        line-height: 1.55;
+      }
+
+      .info-detail-text a {
+        color: #1e3a5f;
+      }
+      .info-detail-text a:hover {
+        color: #f59e0b;
+      }
+
+      .notice-strip {
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+        border-radius: 14px;
+        padding: 1.1rem 1.3rem;
+      }
+
+      .notice-strip strong {
+        display: block;
+        font-size: 0.88rem;
+        color: #92400e;
+        margin-bottom: 0.4rem;
+      }
+
+      .notice-strip span {
+        font-size: 0.84rem;
+        color: #64748b;
+        line-height: 1.65;
+      }
+
+      .map-wrap {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e2e8f0;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 1024px) {
+        .contact-layout {
+          grid-template-columns: 1fr;
+        }
+        .contact-sidebar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .contact-sidebar {
+          grid-template-columns: 1fr;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <span class="logo-text">Ingino Logistics</span>
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary nav-cta"
+            >Get a Free Quote</a
+          >
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-label label-light">Get In Touch</span>
+        <h1>Request a Free<br />Freight Quote</h1>
+        <p>
+          Fill in the form below with your load details and we will get back to
+          you with a fast, competitive quote. For urgent shipments email us
+          directly at
+          <a
+            href="mailto:mgi5742@gmail.com"
+            style="color: #f59e0b; font-weight: 700"
+            >mgi5742@gmail.com</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section">
+      <div class="container contact-layout">
+        <!-- ══ FORM ══ -->
+        <div>
+          <div id="form-result">
+            ⚠️ Please fill in all required fields before submitting.
+          </div>
+
+          <!--
+          ════════════════════════════════════════════════════
+          FORMSUBMIT — NATIVE POST (no AJAX)
+          ════════════════════════════════════════════════════
+          1. Email is already set to mgi5742@gmail.com
+          2. Deploy site live — won't work on localhost
+          3. Submit form once on the live site
+          4. Check mgi5742@gmail.com inbox (and spam folder)
+          5. Click the activation link from FormSubmit
+          6. Done — all future submissions go to inbox
+          ════════════════════════════════════════════════════
+          -->
+          <form
+            class="contact-form-wrap"
+            id="contact-form"
+            action="https://formsubmit.co/mgi5742@gmail.com"
+            method="POST"
+            novalidate
+          >
+            <!-- FormSubmit hidden config -->
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Freight Quote Request — Ingino Logistics"
+            />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_next"
+              value="https://inginologistics.com/contact.html"
+            />
+            <input
+              type="hidden"
+              name="_url"
+              value="https://inginologistics.com/contact.html"
+            />
+            <!-- Honeypot spam trap -->
+            <input
+              type="text"
+              name="_honey"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+
+            <h3 class="form-title">Free Freight Quote Form</h3>
+            <p class="form-subtitle">
+              Fields marked <span class="req">*</span> are required. We respond
+              same day.
+            </p>
+
+            <!-- Name -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name"
+                  >First Name <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="first-name"
+                  name="First Name"
+                  placeholder="e.g. James"
+                  autocomplete="given-name"
+                />
+                <span class="field-error" id="err-first-name"
+                  >Please enter your first name.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="last-name"
+                  >Last Name <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="last-name"
+                  name="Last Name"
+                  placeholder="e.g. Robinson"
+                  autocomplete="family-name"
+                />
+                <span class="field-error" id="err-last-name"
+                  >Please enter your last name.</span
+                >
+              </div>
+            </div>
+
+            <!-- Email & Phone -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email"
+                  >Email Address <span class="req">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                />
+                <span class="field-error" id="err-email"
+                  >Please enter a valid email address.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="phone"
+                  >Phone Number <span class="req">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="Phone Number"
+                  placeholder="e.g. (336) 000-0000"
+                  autocomplete="tel"
+                />
+                <span class="field-error" id="err-phone"
+                  >Please enter your phone number.</span
+                >
+              </div>
+            </div>
+
+            <!-- Company -->
+            <div class="form-group">
+              <label for="company"
+                >Company Name <span class="opt">(optional)</span></label
+              >
+              <input
+                type="text"
+                id="company"
+                name="Company"
+                placeholder="e.g. Robinson Industrial LLC"
+                autocomplete="organization"
+              />
+            </div>
+
+            <!-- Service needed -->
+            <div class="form-group">
+              <label for="service"
+                >Service Required <span class="req">*</span></label
+              >
+              <select id="service" name="Service Required">
+                <option value="" disabled selected>Select a service</option>
+                <option value="Full Truckload (FTL)">
+                  Full Truckload (FTL)
+                </option>
+                <option value="Less Than Truckload (LTL)">
+                  Less Than Truckload (LTL)
+                </option>
+                <option value="Long Haul Freight">Long Haul Freight</option>
+                <option value="Local / Regional Delivery">
+                  Local / Regional Delivery
+                </option>
+                <option value="Freight Logistics">Freight Logistics</option>
+                <option value="Expedited Shipping">Expedited Shipping</option>
+                <option value="Multiple Services">Multiple Services</option>
+                <option value="General Enquiry">General Enquiry</option>
+              </select>
+              <span class="field-error" id="err-service"
+                >Please select a service.</span
+              >
+            </div>
+
+            <!-- Origin & Destination -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="origin"
+                  >Pick-Up Location <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="origin"
+                  name="Pick-Up Location"
+                  placeholder="e.g. Winston Salem, NC"
+                />
+                <span class="field-error" id="err-origin"
+                  >Please enter pick-up location.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="destination"
+                  >Delivery Destination <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="destination"
+                  name="Delivery Destination"
+                  placeholder="e.g. Atlanta, GA"
+                />
+                <span class="field-error" id="err-destination"
+                  >Please enter delivery destination.</span
+                >
+              </div>
+            </div>
+
+            <!-- Freight type & Weight -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="freight-type"
+                  >Freight Type <span class="opt">(optional)</span></label
+                >
+                <input
+                  type="text"
+                  id="freight-type"
+                  name="Freight Type"
+                  placeholder="e.g. Dry van, pallets, equipment"
+                />
+              </div>
+              <div class="form-group">
+                <label for="weight"
+                  >Est. Weight / Size <span class="opt">(optional)</span></label
+                >
+                <input
+                  type="text"
+                  id="weight"
+                  name="Estimated Weight"
+                  placeholder="e.g. 10,000 lbs, 4 pallets"
+                />
+              </div>
+            </div>
+
+            <!-- Urgency -->
+            <div class="form-group">
+              <label for="urgency"
+                >Shipment Urgency <span class="req">*</span></label
+              >
+              <select id="urgency" name="Shipment Urgency">
+                <option value="" disabled selected>Select urgency</option>
+                <option value="Same Day">Same Day</option>
+                <option value="Next Day">Next Day</option>
+                <option value="Within 2-3 Days">Within 2–3 Days</option>
+                <option value="This Week">This Week</option>
+                <option value="Within 2 Weeks">Within 2 Weeks</option>
+                <option value="Flexible / Planning Ahead">
+                  Flexible / Planning Ahead
+                </option>
+              </select>
+              <span class="field-error" id="err-urgency"
+                >Please select shipment urgency.</span
+              >
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label for="message"
+                >Additional Details <span class="req">*</span></label
+              >
+              <textarea
+                id="message"
+                name="Message"
+                placeholder="Tell us more about your load — special handling requirements, preferred dates, access restrictions or anything else we should know."
+              ></textarea>
+              <span class="field-error" id="err-message"
+                >Please provide details about your shipment.</span
+              >
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              id="submit-btn"
+              class="btn btn-primary form-submit-btn"
+            >
+              Send Quote Request →
+            </button>
+
+            <p class="form-note">
+              We respond to all quote requests same day during business
+              hours.<br />
+              For urgent loads email us directly at
+              <a
+                href="mailto:mgi5742@gmail.com"
+                style="color: #1e3a5f; font-weight: 700"
+                >mgi5742@gmail.com</a
+              >.<br />
+              Your information is used only to process your enquiry and is never
+              shared.
+            </p>
+          </form>
+        </div>
+
+        <!-- ══ SIDEBAR ══ -->
+        <aside class="contact-sidebar">
+          <div class="info-card">
+            <h3>Contact Details</h3>
+
+            <div class="info-detail">
+              <div class="info-icon">✉️</div>
+              <div class="info-detail-text">
+                <p>Email</p>
+                <a href="mailto:mgi5742@gmail.com">mgi5742@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="info-detail">
+              <div class="info-icon">📍</div>
+              <div class="info-detail-text">
+                <p>Address</p>
+                <span>2811 Bleeker Sq Apt E<br />Winston Salem, NC 27106</span>
+              </div>
+            </div>
+
+            <div class="info-detail">
+              <div class="info-icon">🕐</div>
+              <div class="info-detail-text">
+                <p>Business Hours</p>
+                <span
+                  >Mon – Fri: 7:00am – 6:00pm<br />Saturday: 8:00am – 4:00pm<br />Sunday:
+                  Urgent calls only</span
+                >
+              </div>
+            </div>
+
+            <div class="info-detail">
+              <div class="info-icon">🗺️</div>
+              <div class="info-detail-text">
+                <p>Service Area</p>
+                <span>Winston Salem, NC<br />All 48 contiguous states</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice -->
+          <div class="notice-strip">
+            <strong>⚡ Same-Day Response</strong>
+            <span
+              >We aim to respond to all quote requests the same day they are
+              received. For urgent or same-day freight please email us
+              directly.</span
+            >
+          </div>
+
+          <!-- What to have ready -->
+          <div class="info-card">
+            <h3>What to Have Ready</h3>
+            <ul class="about-list" style="gap: 0.5rem">
+              <li>✅ Pick-up and delivery locations</li>
+              <li>✅ Freight type and description</li>
+              <li>✅ Estimated weight or pallet count</li>
+              <li>✅ Required delivery date or timeline</li>
+              <li>✅ Any special handling requirements</li>
+            </ul>
+          </div>
+
+          <!-- Email CTA -->
+          <a
+            href="mailto:mgi5742@gmail.com"
+            class="btn btn-primary"
+            style="width: 100%; justify-content: center; min-height: 50px"
+          >
+            ✉️ Email Us Directly
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Find Us</span>
+          <h2>Our Location</h2>
+          <p>
+            Based at 2811 Bleeker Sq Apt E, Winston Salem, NC 27106 — serving
+            freight clients locally and across all 48 states.
+          </p>
+        </div>
+        <!--
+          To embed the exact map:
+          1. Go to maps.google.com
+          2. Search: 2811 Bleeker Sq Apt E, Winston Salem, NC 27106
+          3. Click Share → Embed a map → Copy HTML
+          4. Replace the iframe src below with your copied src
+        -->
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3232.0!2d-80.2423!3d36.0999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s2811+Bleeker+Sq%2C+Winston+Salem%2C+NC+27106!5e0!3m2!1sen!2sus!4v1234567890"
+            width="100%"
+            height="420"
+            style="border: 0; display: block"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ingino Logistics — 2811 Bleeker Sq Apt E, Winston Salem, NC 27106"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-label label-light">Ready to Ship?</span>
+          <h2>Let's Move Your Freight.</h2>
+          <p>
+            Fast response, fair pricing and freight handled with care. Get in
+            touch today and let Ingino Logistics handle the rest.
+          </p>
+          <div class="cta-btns">
+            <a href="mailto:mgi5742@gmail.com" class="btn btn-accent"
+              >✉️ Email Us Now</a
+            >
+            <a href="services.html" class="btn btn-outline-light"
+              >View All Services</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="images/logo.png" alt="Ingino Logistics" />
+            <span>Ingino Logistics</span>
+          </div>
+          <p>
+            Professional trucking, freight and logistics services based in
+            Winston Salem, NC. Serving all 48 contiguous states since 2014.
+          </p>
+          <a href="mailto:mgi5742@gmail.com" class="footer-email"
+            >mgi5742@gmail.com</a
+          >
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Full Truckload (FTL)</a></li>
+            <li><a href="services.html">Less Than Truckload (LTL)</a></li>
+            <li><a href="services.html">Long Haul Freight</a></li>
+            <li><a href="services.html">Local Delivery</a></li>
+            <li><a href="services.html">Freight Logistics</a></li>
+            <li><a href="services.html">Expedited Shipping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>2811 Bleeker Sq Apt E</li>
+            <li>Winston Salem, NC 27106</li>
+            <li><a href="mailto:mgi5742@gmail.com">mgi5742@gmail.com</a></li>
+            <li><a href="contact.html">Send a message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>
+          © 2026 Ingino Logistics. All rights reserved. | Winston Salem, North
+          Carolina
+        </p>
+        <p>DOT Licensed · Fully Insured · 48 States</p>
+      </div>
+    </footer>
+
+    <!-- ════════════════════════════════════════════════════
+         INLINE JS — Validation only, native POST to FormSubmit
+         ════════════════════════════════════════════════════ -->
+    <script>
+      (function () {
+        "use strict";
+
+        var form = document.getElementById("contact-form");
+        var result = document.getElementById("form-result");
+        var btn = document.getElementById("submit-btn");
+
+        /* ── helpers ── */
+        function showError(inputId, errorId) {
+          var el = document.getElementById(inputId);
+          var err = document.getElementById(errorId);
+          if (el) el.classList.add("error");
+          if (err) err.classList.add("visible");
+        }
+
+        function clearError(inputId, errorId) {
+          var el = document.getElementById(inputId);
+          var err = document.getElementById(errorId);
+          if (el) el.classList.remove("error");
+          if (err) err.classList.remove("visible");
+        }
+
+        function isValidEmail(val) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
+        }
+
+        /* ── clear errors as user types ── */
+        [
+          ["first-name", "err-first-name"],
+          ["last-name", "err-last-name"],
+          ["email", "err-email"],
+          ["phone", "err-phone"],
+          ["service", "err-service"],
+          ["origin", "err-origin"],
+          ["destination", "err-destination"],
+          ["urgency", "err-urgency"],
+          ["message", "err-message"],
+        ].forEach(function (pair) {
+          var el = document.getElementById(pair[0]);
+          if (el) {
+            el.addEventListener("input", function () {
+              clearError(pair[0], pair[1]);
+              result.classList.remove("visible");
+            });
+            el.addEventListener("change", function () {
+              clearError(pair[0], pair[1]);
+              result.classList.remove("visible");
+            });
+          }
+        });
+
+        /* ── validate ── */
+        function validate() {
+          var valid = true;
+
+          var firstName = document.getElementById("first-name").value.trim();
+          var lastName = document.getElementById("last-name").value.trim();
+          var email = document.getElementById("email").value.trim();
+          var phone = document.getElementById("phone").value.trim();
+          var service = document.getElementById("service").value;
+          var origin = document.getElementById("origin").value.trim();
+          var destination = document.getElementById("destination").value.trim();
+          var urgency = document.getElementById("urgency").value;
+          var message = document.getElementById("message").value.trim();
+
+          if (!firstName) {
+            showError("first-name", "err-first-name");
+            valid = false;
+          }
+          if (!lastName) {
+            showError("last-name", "err-last-name");
+            valid = false;
+          }
+          if (!email || !isValidEmail(email)) {
+            showError("email", "err-email");
+            valid = false;
+          }
+          if (!phone) {
+            showError("phone", "err-phone");
+            valid = false;
+          }
+          if (!service) {
+            showError("service", "err-service");
+            valid = false;
+          }
+          if (!origin) {
+            showError("origin", "err-origin");
+            valid = false;
+          }
+          if (!destination) {
+            showError("destination", "err-destination");
+            valid = false;
+          }
+          if (!urgency) {
+            showError("urgency", "err-urgency");
+            valid = false;
+          }
+          if (!message) {
+            showError("message", "err-message");
+            valid = false;
+          }
+
+          return valid;
+        }
+
+        /* ── submit — validate then allow native POST ── */
+        form.addEventListener("submit", function (e) {
+          if (!validate()) {
+            e.preventDefault();
+            result.classList.add("visible");
+            result.scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+          }
+          /* Valid — native POST to FormSubmit */
+          btn.disabled = true;
+          btn.textContent = "Sending…";
+        });
+      })();
+    </script>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
